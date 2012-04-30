@@ -1,0 +1,26 @@
+<?php
+
+$macro=$_POST['pole'];
+
+if($macro!=null){
+$last_line=shell_exec("pwd");
+$last_line=split("\n", $last_line);
+$macrospath=$last_line[0]."/macros";
+//echo $macrospath;
+$test=system("sudo rm $macrospath/\"$macro\".txt",$retval);
+  if($retval==0)
+  echo 'Poprawnie usunięto użytkownika';
+  else
+  echo 'Niepoprawne dane';
+}
+elseif ($macro==null) {
+
+echo '<form method="post">
+		   
+		   <input type="text" name="pole">
+		   <input type="submit" value="usuń"> 
+	      </form>';
+echo 'Podaj nazwę makra, które chcesz usunąć.';
+
+}
+?>
